@@ -1,0 +1,326 @@
+{
+  "bounds": [
+    -180,
+    -85.0511,
+    180,
+    85.0511
+  ],
+  "center": [
+    -122,
+    37,
+    11
+  ],
+  "format": "png",
+  "interactivity": false,
+  "minzoom": 0,
+  "maxzoom": 22,
+  "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over",
+  "Stylesheet": [
+    "style.mss"
+  ],
+  "Layer": [
+    {
+      "geometry": "polygon",
+      "extent": [
+        -179.9999999999996,
+        -85.051,
+        179.9999999999996,
+        83.66601980000003
+      ],
+      "Datasource": {
+        "type": "postgis",
+        "table": "coastline",
+        "key_field": "",
+        "geometry_field": "",
+        "extent_cache": "auto",
+        "extent": "-20037508.3427892,-20037471.2051371,20037508.3427892,18461046.6925954",
+        "host": "localhost",
+        "dbname": "osm"
+      },
+      "id": "coastline",
+      "class": "",
+      "srs-name": "900913",
+      "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over",
+      "advanced": {},
+      "name": "coastline"
+    },
+    {
+      "extent": [
+        -124.99999955839542,
+        24.39630797087243,
+        -65.99999997883519,
+        49.999999994126654
+      ],
+      "Datasource": {
+        "type": "postgis",
+        "table": "(SELECT way FROM planet_osm_polygon WHERE way && !bbox! AND tags ? 'leisure') AS leisure",
+        "key_field": "",
+        "geometry_field": "",
+        "extent_cache": "auto",
+        "extent": "-13914936.3,2801774.86,-7347086.39,6446275.84",
+        "host": "localhost",
+        "dbname": "osm"
+      },
+      "id": "leisure",
+      "class": "",
+      "srs-name": "900913",
+      "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over",
+      "advanced": {},
+      "name": "leisure",
+      "status": "off"
+    },
+    {
+      "geometry": "polygon",
+      "extent": [
+        -124.4217815197688,
+        32.53427134298069,
+        -114.13146079263862,
+        42.009503674401635
+      ],
+      "Datasource": {
+        "type": "postgis",
+        "table": "(SELECT access_typ, geom FROM cpad19_units) AS cpad",
+        "key_field": "",
+        "geometry_field": "",
+        "extent_cache": "auto",
+        "extent": "-13850569.3623726,3833648.18425745,-12705056.098929,5162403.15470979",
+        "host": "localhost",
+        "dbname": "cpad"
+      },
+      "id": "cpad",
+      "class": "",
+      "srs-name": "900913",
+      "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over",
+      "advanced": {},
+      "name": "cpad"
+    },
+    {
+      "extent": [
+        -124.99999955839542,
+        24.39630797087243,
+        -65.99999997883519,
+        49.999999994126654
+      ],
+      "Datasource": {
+        "type": "postgis",
+        "table": "(SELECT way FROM planet_osm_polygon WHERE way && !bbox! AND tags -> 'amenity' = 'university') AS school",
+        "key_field": "",
+        "geometry_field": "",
+        "extent_cache": "auto",
+        "extent": "-13914936.3,2801774.86,-7347086.39,6446275.84",
+        "host": "localhost",
+        "dbname": "osm"
+      },
+      "id": "school",
+      "class": "",
+      "srs-name": "900913",
+      "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over",
+      "advanced": {},
+      "name": "school"
+    },
+    {
+      "geometry": "polygon",
+      "extent": [
+        -125.00123238308,
+        24.5004202953038,
+        -66.885080406621,
+        49.3765695233577
+      ],
+      "Datasource": {
+        "type": "postgis",
+        "table": "(SELECT ftype, geom FROM waterbody WHERE geom && !bbox! AND ftype IN ('Reservoir', 'LakePond', 'Estuary', 'SwampMarsh') UNION SELECT ftype, ST_Union(geom) AS geom FROM area WHERE geom && !bbox! AND ftype IN ('LakePond', 'StreamRiver', 'BayInlet', 'SeaOcean', 'Area of Complex Channels', 'CanalDitch', 'Foreshore') GROUP BY ftype) AS water",
+        "key_field": "",
+        "geometry_field": "",
+        "extent_cache": "auto",
+        "extent": "-125.00123238308,24.5004202953038,-66.885080406621,49.3765695233577",
+        "host": "localhost",
+        "dbname": "nhdplus"
+      },
+      "id": "nhdplus-water2",
+      "class": "",
+      "srs-name": "WGS84",
+      "srs": "+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs",
+      "advanced": {},
+      "name": "nhdplus-water2"
+    },
+    {
+      "geometry": "polygon",
+      "extent": [
+        -125.00123238308,
+        24.5004202953038,
+        -66.885080406621,
+        49.3765695233577
+      ],
+      "Datasource": {
+        "type": "postgis",
+        "table": "(SELECT ftype, ST_Buffer(geom::geography, -50) AS geom FROM waterbody WHERE geom && !bbox! AND ftype IN ('Reservoir', 'LakePond', 'Estuary', 'SwampMarsh') UNION SELECT ftype, ST_Buffer(ST_Union(geom)::geography, -50) AS geom FROM area WHERE geom && !bbox! AND ftype IN ('LakePond', 'StreamRiver', 'SwampMarsh', 'SeaOcean') GROUP BY ftype) AS water",
+        "key_field": "",
+        "geometry_field": "",
+        "extent_cache": "auto",
+        "extent": "-125.00123238308,24.5004202953038,-66.885080406621,49.3765695233577",
+        "host": "localhost",
+        "dbname": "nhdplus"
+      },
+      "id": "nhdplus-water",
+      "class": "water",
+      "srs-name": "WGS84",
+      "srs": "+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs",
+      "advanced": {},
+      "name": "nhdplus-water"
+    },
+    {
+      "geometry": "linestring",
+      "extent": [
+        -124.99999946856389,
+        24.05515386861494,
+        -65.99999997883519,
+        49.999999994126654
+      ],
+      "Datasource": {
+        "type": "postgis",
+        "table": "(SELECT tags -> 'highway' AS highway, way FROM planet_osm_line WHERE way && !bbox! AND tags -> 'highway' IN ('motorway', 'trunk', 'primary', 'secondary', 'tertiary', 'residential', 'service')) AS highway",
+        "key_field": "",
+        "geometry_field": "",
+        "extent_cache": "auto",
+        "extent": "-13914936.29,2760130.29,-7347086.39,6446275.84",
+        "host": "localhost",
+        "dbname": "osm"
+      },
+      "id": "highway",
+      "class": "",
+      "srs-name": "900913",
+      "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over",
+      "advanced": {},
+      "name": "highway"
+    },
+    {
+      "extent": [
+        -124.99999955839542,
+        24.39630797087243,
+        -65.99999997883519,
+        49.999999994126654
+      ],
+      "Datasource": {
+        "type": "postgis",
+        "table": "(SELECT * FROM (SELECT DISTINCT ON (name) name, way, place, population, priority FROM (SELECT tags->'name' AS name, way, tags->'place' AS place, COALESCE(replace(tags->'population', ',', '')::numeric, 0) AS population, CASE WHEN tags->'place' IN ('city') THEN 1 WHEN tags->'place' IN ('suburb') THEN 2 WHEN tags->'place' IN('town') THEN 3 WHEN tags->'place' IN ('neighbourhood') THEN 4 WHEN tags->'place' IN ('village') THEN 5 ELSE 10 END AS priority FROM planet_osm_point WHERE way && !bbox! AND tags ? 'name' AND tags ? 'place' AND tags->'place' IN ('city','town','village','suburb','neighbourhood') UNION SELECT tags->'name' AS name, way, tags->'place' AS place, COALESCE(replace(tags->'population', ',', '')::numeric, 0) AS population, CASE WHEN tags->'place' IN ('city') THEN 1 WHEN tags->'place' IN ('suburb') THEN 2 WHEN tags->'place' IN('town') THEN 3 WHEN tags->'place' IN ('neighbourhood') THEN 4 WHEN tags->'place' IN ('village') THEN 5 ELSE 10 END AS priority FROM planet_osm_polygon WHERE way && !bbox! AND tags ? 'name' AND tags ? 'place' AND tags->'place' IN ('city','town','village','suburb','neighbourhood')) AS stuff ORDER BY name) AS stuff ORDER BY priority, population DESC) AS places",
+        "key_field": "",
+        "geometry_field": "",
+        "extent_cache": "auto",
+        "extent": "-13914936.3,2801774.86,-7347086.39,6446275.84",
+        "host": "localhost",
+        "dbname": "osm"
+      },
+      "id": "places",
+      "class": "",
+      "srs-name": "900913",
+      "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over",
+      "advanced": {},
+      "name": "places"
+    },
+    {
+      "geometry": "polygon",
+      "extent": [
+        -124.4217815197688,
+        32.53427134298069,
+        -114.13146079263862,
+        42.009503674401635
+      ],
+      "Datasource": {
+        "type": "postgis",
+        "table": "(SELECT unit_name, gis_acres, geom FROM cpad19_superunits WHERE unit_name IS NOT NULL ORDER BY gis_acres DESC) AS cpad",
+        "key_field": "",
+        "geometry_field": "",
+        "extent_cache": "auto",
+        "extent": "-13850569.3623726,3833648.18425745,-12705056.098929,5162403.15470979",
+        "host": "localhost",
+        "dbname": "cpad"
+      },
+      "id": "cpad-labels",
+      "class": "",
+      "srs-name": "900913",
+      "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over",
+      "advanced": {},
+      "name": "cpad-labels"
+    },
+    {
+      "geometry": "polygon",
+      "extent": [
+        -124.689907916896,
+        24.5214244952712,
+        -66.9978666064459,
+        49.3843329900124
+      ],
+      "Datasource": {
+        "type": "postgis",
+        "table": "(SELECT * FROM (SELECT comid as id, gnis_name AS name, ftype, geom, areasqkm\n FROM area\n  WHERE gnis_name IS NOT NULL AND fcode NOT IN (\n    46003 -- intermittent stream\n  ) \nUNION SELECT comid as id, gnis_name AS name, ftype, geom, areasqkm FROM waterbody WHERE gnis_name IS NOT NULL) as water ORDER BY areasqkm DESC) AS labels",
+        "key_field": "",
+        "geometry_field": "",
+        "extent_cache": "auto",
+        "extent": "-124.689907916896,24.5214244952712,-66.9978666064459,49.3843329900124",
+        "host": "localhost",
+        "dbname": "nhdplus"
+      },
+      "id": "water-labels",
+      "class": "",
+      "srs-name": "WGS84",
+      "srs": "+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs",
+      "advanced": {},
+      "name": "water-labels"
+    },
+    {
+      "geometry": "point",
+      "extent": [
+        -124.99992194395487,
+        24.05515386861494,
+        -65.99999997883519,
+        49.999985558476126
+      ],
+      "Datasource": {
+        "type": "postgis",
+        "table": "(SELECT name, way FROM planet_osm_point WHERE tags -> 'natural' = 'bay') AS bay",
+        "key_field": "",
+        "geometry_field": "",
+        "extent_cache": "auto",
+        "extent": "-13914927.66,2760130.29,-7347086.39,6446273.34",
+        "host": "localhost",
+        "dbname": "osm"
+      },
+      "id": "bay",
+      "class": "",
+      "srs-name": "900913",
+      "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over",
+      "advanced": {},
+      "name": "bay"
+    },
+    {
+      "geometry": "linestring",
+      "extent": [
+        -124.99999946856389,
+        24.05515386861494,
+        -65.99999997883519,
+        49.999999994126654
+      ],
+      "Datasource": {
+        "type": "postgis",
+        "table": "(SELECT tags -> 'highway' AS highway, tags -> 'name' AS name, way FROM planet_osm_line WHERE way && !bbox! AND tags -> 'highway' IN ('motorway', 'trunk', 'primary', 'secondary') AND tags ? 'name') AS highway",
+        "key_field": "",
+        "geometry_field": "",
+        "extent_cache": "auto",
+        "extent": "-13914936.29,2760130.29,-7347086.39,6446275.84",
+        "host": "localhost",
+        "dbname": "osm"
+      },
+      "id": "highway-labels",
+      "class": "",
+      "srs-name": "900913",
+      "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over",
+      "advanced": {},
+      "name": "highway-labels"
+    }
+  ],
+  "scale": 1,
+  "metatile": 2,
+  "name": "Inner Shadow",
+  "description": "",
+  "attribution": ""
+}

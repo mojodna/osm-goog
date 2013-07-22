@@ -59,6 +59,15 @@ Map {
   polygon-fill: @water;
 }
 
+#nhdflowline
+{
+  [streamorder>=4]
+  {
+    line-color: @water;
+    line-width: 0.5;
+  }
+}
+
 #leisure
 {
   polygon-fill: @park;

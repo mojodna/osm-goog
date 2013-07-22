@@ -119,6 +119,31 @@
       "name": "school"
     },
     {
+      "geometry": "linestring",
+      "extent": [
+        -124.762581116784,
+        24.5398386952426,
+        -66.9498284065205,
+        49.3766131233576
+      ],
+      "Datasource": {
+        "type": "postgis",
+        "table": "(SELECT flowline.comid, streamorde as streamorder, ftype, flowline.fcode, geom as geom\n FROM flowline\n LEFT JOIN plusflowlinevaa ON plusflowlinevaa.comid=flowline.comid\n WHERE flowline.\"ftype\" IN (\n  '460',\n  'Artificial Path', 'ArtificialPath',\n  'CanalDitch',\n  --'Coastline',\n  --'Connector',\n  --'Pipeline',\n  'StreamRiver',\n  'Uninitialized',\n  '1')\n  AND (plusflowlinevaa.streamorde IS NULL OR plusflowlinevaa.streamorde >= 2)\n) AS flowline",
+        "key_field": "",
+        "geometry_field": "",
+        "extent_cache": "auto",
+        "extent": "-124.762581116784,24.5398386952426,-66.9498284065205,49.3766131233576",
+        "host": "localhost",
+        "dbname": "nhdplus"
+      },
+      "id": "nhdflowline",
+      "class": "",
+      "srs-name": "WGS84",
+      "srs": "+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs",
+      "advanced": {},
+      "name": "nhdflowline"
+    },
+    {
       "geometry": "polygon",
       "extent": [
         -125.00123238308,
